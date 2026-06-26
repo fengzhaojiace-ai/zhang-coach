@@ -24,7 +24,10 @@
   html,body{height:100%;}
   body{
     font-family:"Source Han Serif SC","Source Han Serif CN","Noto Serif SC","Songti SC","SimSun",serif;
-    background:var(--paper);
+    background:
+      radial-gradient(circle at 16% 18%, rgba(217,119,87,.12), transparent 44%),
+      radial-gradient(circle at 84% 82%, rgba(193,95,60,.10), transparent 48%),
+      var(--paper);
     color:var(--ink);
     overflow:hidden;
     -webkit-font-smoothing:antialiased;
@@ -92,11 +95,24 @@
 
   /* ===== 封面 ===== */
   .cover{align-items:flex-start;justify-content:center;}
-  .cover .kicker{font-size:clamp(14px,1.8vw,20px);color:var(--clay-deep);font-weight:700;letter-spacing:.18em;margin-bottom:1.1em;}
-  .cover h1{font-size:clamp(40px,8vw,104px);line-height:1.02;font-weight:900;letter-spacing:-.02em;}
-  .cover .sub{font-size:clamp(18px,2.6vw,34px);color:var(--ink-soft);margin-top:.6em;}
-  .cover .rule{width:88px;height:6px;border-radius:3px;background:var(--clay);margin:1.5em 0;}
+  .cover .kicker{display:inline-flex;align-self:flex-start;align-items:center;gap:.5em;
+    background:var(--clay-soft);color:var(--clay-deep);
+    font-size:clamp(13px,1.5vw,17px);font-weight:700;letter-spacing:.08em;
+    padding:.5em 1.2em;border-radius:999px;margin-bottom:.9em;}
+  .cover .kicker::before{content:"";width:.55em;height:.55em;border-radius:50%;background:var(--clay);}
+  .cover h1{font-size:clamp(44px,9vw,108px);line-height:1.02;font-weight:900;letter-spacing:-.02em;}
+  .cover h1 em{font-style:normal;color:var(--clay-deep);}
+  .cover .sub{font-size:clamp(16px,2.4vw,30px);color:var(--ink-soft);margin-top:.55em;line-height:1.55;}
+  .cover .slogan{font-size:clamp(17px,2.3vw,28px);color:var(--clay-deep);font-weight:700;margin-top:.9em;}
   .cover .meta{font-size:clamp(13px,1.5vw,18px);color:var(--ink-soft);}
+
+  /* 封面数据卡 */
+  .cover-stats{display:flex;flex-wrap:wrap;gap:clamp(12px,1.5vw,20px);margin-top:1.7em;}
+  .cstat{background:var(--card);border:1px solid var(--line);border-radius:16px;
+    padding:.95em 1.3em;box-shadow:0 6px 22px rgba(70,50,30,.07);min-width:118px;}
+  .cstat .n{font-size:clamp(26px,3.6vw,42px);font-weight:900;color:var(--clay-deep);line-height:1;}
+  .cstat .n small{font-size:.42em;font-weight:700;color:var(--clay);margin-left:.12em;}
+  .cstat .l{font-size:clamp(11px,1.2vw,14px);color:var(--ink-soft);margin-top:.55em;letter-spacing:.02em;}
 
   /* ===== 时间轴总览 ===== */
   .timeline{display:flex;flex-direction:column;gap:.55em;margin-top:1.1em;max-width:60em;}
@@ -156,7 +172,7 @@
   @media (max-width:680px){
     .slide{padding:7vh 7vw 9vh;justify-content:flex-start;overflow-y:auto;-webkit-overflow-scrolling:touch;}
     h1.title{font-size:clamp(26px,8vw,42px);}
-    .cover h1{font-size:clamp(48px,18vw,84px);}
+    .cover h1{font-size:clamp(38px,13vw,76px);}
     .cover .sub{font-size:clamp(16px,4.6vw,22px);}
     .lead{font-size:clamp(15px,4.3vw,19px);max-width:none;}
     .badge{font-size:13px;}
@@ -166,6 +182,10 @@
     .tl-row{padding:.75em .9em;}
     .tl-row .yr,.tl-row .ev{font-size:clamp(13px,3.9vw,16px);}
     .hint{display:none;}
+    .cover-stats{gap:10px;width:100%;}
+    .cstat{flex:1 1 calc(50% - 10px);min-width:0;padding:.85em 1em;}
+    .cstat .n{font-size:clamp(24px,7vw,34px);}
+    .cover .slogan{font-size:clamp(16px,4.6vw,22px);}
   }
 </style>
 </head>
@@ -175,10 +195,16 @@
 
   <!-- 0 封面 -->
   <section class="slide cover active">
-    <div class="kicker">体态调整 · 四天三晚</div>
-    <h1>我是<br>张教练</h1>
-    <div class="rule"></div>
-    <div class="sub">从一个只会"套动作"的小教练,<br>到 10 人团队 —— 我这一路怎么走过来的</div>
+    <div class="kicker">体态调整 · 四天三晚 · 张教练</div>
+    <h1>我是<em>张教练</em></h1>
+    <div class="sub">从一个只会"套动作"的小教练,<br>到带 10 人团队 —— 这一路我怎么走过来的。</div>
+    <div class="slogan">我走过的弯路,就是你们的捷径。</div>
+    <div class="cover-stats">
+      <div class="cstat"><div class="n">10<small>年</small></div><div class="l">一线实战 · 2016 至今</div></div>
+      <div class="cstat"><div class="n">60<small>万</small></div><div class="l">单月最高业绩</div></div>
+      <div class="cstat"><div class="n">10<small>人</small></div><div class="l">体态调整团队</div></div>
+      <div class="cstat"><div class="n">25–30<small>万</small></div><div class="l">团队月业绩</div></div>
+    </div>
   </section>
 
   <!-- 1 时间轴总览 -->
